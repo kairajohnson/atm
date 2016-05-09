@@ -15,9 +15,18 @@ function transaction(entry){
   }
 this.entries.deposit.on('click', function (){
   var input = parseInt(transaction.entries.input.val());
+  transaction.balance += input;
+  transaction.entries.balance.html("$" + transaction.balance)
 
-  transaction.entries.balance.replaceWith("<p>" + input + "</p>")
- console.log(transaction.entries.input.val())
+  console.log(transaction.balance)
+})
+
+this.entries.withdraw.on('click', function (){
+  var input = parseInt(transaction.entries.input.val());
+  transaction.balance -= input;
+  transaction.entries.balance.html("$" + transaction.balance)
+
+  console.log(transaction.balance)
 })
 
 };
