@@ -23,9 +23,13 @@ this.entries.deposit.on('click', function (){
 
 this.entries.withdraw.on('click', function (){
   var input = parseInt(transaction.entries.input.val());
+  var balance = transaction.entries.balance
   transaction.balance -= input;
-  transaction.entries.balance.html("$" + transaction.balance)
-
+  balance.html("$" + transaction.balance)
+  if (transaction.balance <= 0) {
+      balance.css("color", "red");
+    return alert("your account has in sufficient funds");
+  }
   console.log(transaction.balance)
 })
 
